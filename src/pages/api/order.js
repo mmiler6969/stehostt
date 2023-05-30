@@ -20,9 +20,11 @@ export default async (req, res) => {
         break;
     }
 
+    const successUrl = `${process.env.URL}/success`;
+const cancelUrl = `${process.env.URL}/cancel`;
     const stripeObj = await stripe.checkout.sessions.create({
-      success_url: 'http://kamil.civ.pl/success',
-      cancel_url: 'http://kamil.civ.pl/cancel',
+      success_url: successUrl,
+      cancel_url: cancelUrl,
       payment_method_types: ['card', 'p24', 'blik', 'paypal'],
       line_items: [{ price, quantity: 1 }],
       mode: 'payment',
