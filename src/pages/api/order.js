@@ -20,8 +20,8 @@ export default async (req, res) => {
         break;
     }
 
-    const successUrl = `${process.env.URL}/success`;
-const cancelUrl = `${process.env.URL}/cancel`;
+    const successUrl = `https://stehostt-fhay.vercel.app//success`;
+const cancelUrl = `https://stehostt-fhay.vercel.app//cancel`;
 
     const stripeObj = await stripe.checkout.sessions.create({
       success_url: successUrl,

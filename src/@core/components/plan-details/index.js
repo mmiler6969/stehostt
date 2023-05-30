@@ -50,7 +50,7 @@ const PlanDetails = props => {
         body: JSON.stringify({ productId, plan })
       });
 
-            const { id: sessionId  } = await response.json();
+      const { id: sessionId  } = await response.json();
 
       const stripe = await stripePromise;
 
