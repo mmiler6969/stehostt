@@ -22,6 +22,7 @@ export default async (req, res) => {
 
     const successUrl = `${process.env.URL}/success`;
 const cancelUrl = `${process.env.URL}/cancel`;
+
     const stripeObj = await stripe.checkout.sessions.create({
       success_url: successUrl,
       cancel_url: cancelUrl,
