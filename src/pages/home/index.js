@@ -30,6 +30,7 @@ const CardContent = styled(MuiCardContent)(({ theme }) => ({
 const data = {
   pricingPlans: [
     {
+      id:0,
       imgWidth: 100,
       title: 'Basic',
       imgHeight: 100,
@@ -51,6 +52,7 @@ const data = {
       ]
     },
     {
+      id:1,
       imgWidth: 100,
       imgHeight: 100,
       monthlyPrice: 49,
@@ -72,6 +74,7 @@ const data = {
       ]
     },
     {
+      id:2,
       imgWidth: 100,
       imgHeight: 100,
       monthlyPrice: 99,

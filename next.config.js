@@ -18,6 +18,9 @@ module.exports = withTM({
   experimental: {
     esmExternals: false
   },
+  experiments: {
+    topLevelAwait: true,
+  },
   webpack: config => {
     config.resolve.alias = {
       ...config.resolve.alias,
