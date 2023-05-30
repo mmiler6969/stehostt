@@ -34,14 +34,14 @@ const data = {
       imgWidth: 100,
       title: 'Basic',
       imgHeight: 100,
-      monthlyPrice: 0,
+      monthlyPrice: 20,
       currentPlan: false,
       popularPlan: false,
       subtitle: 'Najprostszy plan dla małych i średnich firm',
       imgSrc: '/images/pages/pricing-illustration-1.png',
       yearlyPlan: {
-        perMonth: 20,
-        totalAnnual: 18
+        perMonth: 18,
+        totalAnnual: 216
       },
       planBenefits: [
         '50 GB SSD',
@@ -201,6 +201,8 @@ const Pricing = ({ apiData }) => {
       setPlan('monthly')
     }
   }
+
+
 
   return (
     <Card>

@@ -53,6 +53,8 @@ import 'src/iconify-bundle/icons-bundle-react'
 // ** Global css styles
 import '../../styles/globals.css'
 
+
+
 const clientSideEmotionCache = createEmotionCache()
 
 // ** Pace Loader
@@ -96,7 +98,7 @@ const App = props => {
 
       <CacheProvider value={emotionCache}>
         <Head>
-          <title>{`${themeConfig.templateName} - `}</title>
+          <title>{`${themeConfig.templateName} `}</title>
           <meta
             name='description'
             content={`${themeConfig.templateName} – based on MUI v5.`}

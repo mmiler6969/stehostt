@@ -13,6 +13,13 @@ import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 // ** Custom Components Imports
 import CustomChip from 'src/@core/components/mui/chip'
 
+// ** stripe
+import {loadStripe} from '@stripe/stripe-js';
+
+import axios from 'axios';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE);
+
 // ** Styled Component for the wrapper of whole component
 const BoxWrapper = styled(Box)(({ theme }) => ({
   position: 'relative',
@@ -32,6 +39,30 @@ const BoxFeature = styled(Box)(({ theme }) => ({
 const PlanDetails = props => {
   // ** Props
   const { plan, data } = props
+
+  const handleOrder = async (productId) => {
+    try {
+      const response = await fetch('/api/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ productId, plan })
+      });
+
+            const { id: sessionId  } = await response.json();
+
+      const stripe = await stripePromise;
+
+      const { error } = await stripe.redirectToCheckout({
+        sessionId
+      });
+
+      console.log(error);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const renderFeatures = () => {
     return data?.planBenefits.map((item, index) => (
@@ -109,6 +140,7 @@ const PlanDetails = props => {
         fullWidth
         color={data?.currentPlan ? 'success' : 'primary'}
         variant={data?.popularPlan ? 'contained' : 'outlined'}
+        onClick={() => handleOrder(data?.id)}
       >
         {data?.currentPlan ? 'Your Current Plan' : 'Wybierz'}
       </Button>
